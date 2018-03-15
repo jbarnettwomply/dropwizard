@@ -2,6 +2,7 @@ package io.dropwizard.jersey.guava;
 
 import com.google.common.base.Optional;
 import org.glassfish.hk2.api.ServiceLocator;
+import org.glassfish.jersey.internal.inject.InjectionManager;
 import org.glassfish.jersey.internal.inject.Providers;
 import org.glassfish.jersey.internal.util.ReflectionHelper;
 import org.glassfish.jersey.internal.util.collection.ClassTypePair;
@@ -16,10 +17,10 @@ import java.util.List;
 
 @Singleton
 public class OptionalParamConverterProvider implements ParamConverterProvider {
-    private final ServiceLocator locator;
+    private final InjectionManager locator;
 
     @Inject
-    public OptionalParamConverterProvider(final ServiceLocator locator) {
+    public OptionalParamConverterProvider(final InjectionManager locator) {
         this.locator = locator;
     }
 

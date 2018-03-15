@@ -1,5 +1,7 @@
 package io.dropwizard.jersey.optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.codahale.metrics.MetricRegistry;
 import io.dropwizard.jersey.AbstractJerseyTest;
 import io.dropwizard.jersey.DropwizardResourceConfig;
@@ -8,14 +10,12 @@ import io.dropwizard.jersey.MyMessageParamConverterProvider;
 import io.dropwizard.jersey.params.UUIDParam;
 import org.junit.Test;
 
+import java.util.Optional;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Application;
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class OptionalQueryParamResourceTest extends AbstractJerseyTest {
 
