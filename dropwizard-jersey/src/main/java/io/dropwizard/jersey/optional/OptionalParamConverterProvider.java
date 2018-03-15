@@ -1,25 +1,25 @@
 package io.dropwizard.jersey.optional;
 
-import org.glassfish.hk2.api.ServiceLocator;
+import org.glassfish.jersey.internal.inject.InjectionManager;
 import org.glassfish.jersey.internal.inject.Providers;
 import org.glassfish.jersey.internal.util.ReflectionHelper;
 import org.glassfish.jersey.internal.util.collection.ClassTypePair;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.ws.rs.ext.ParamConverter;
-import javax.ws.rs.ext.ParamConverterProvider;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.ws.rs.ext.ParamConverter;
+import javax.ws.rs.ext.ParamConverterProvider;
 
 @Singleton
 public class OptionalParamConverterProvider implements ParamConverterProvider {
-    private final ServiceLocator locator;
+    private final InjectionManager locator;
 
     @Inject
-    public OptionalParamConverterProvider(final ServiceLocator locator) {
+    public OptionalParamConverterProvider(final InjectionManager locator) {
         this.locator = locator;
     }
 

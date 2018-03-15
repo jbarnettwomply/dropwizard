@@ -22,8 +22,6 @@ import org.glassfish.jersey.server.monitoring.RequestEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.Path;
-import javax.ws.rs.ext.Provider;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.util.Comparator;
@@ -31,6 +29,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
+import javax.ws.rs.Path;
+import javax.ws.rs.ext.Provider;
 
 public class DropwizardResourceConfig extends ResourceConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(DropwizardResourceConfig.class);
@@ -66,14 +66,19 @@ public class DropwizardResourceConfig extends ResourceConfig {
         register(CacheControlledResponseFeature.class);
         register(io.dropwizard.jersey.guava.OptionalMessageBodyWriter.class);
         register(io.dropwizard.jersey.guava.OptionalParamFeature.class);
+        register(io.dropwizard.jersey.guava.OptionalParamConverterProvider.class);
         register(io.dropwizard.jersey.optional.OptionalMessageBodyWriter.class);
         register(io.dropwizard.jersey.optional.OptionalDoubleMessageBodyWriter.class);
+        register(io.dropwizard.jersey.optional.OptionalDoubleParamConverterProvider.class);
         register(io.dropwizard.jersey.optional.OptionalIntMessageBodyWriter.class);
+        register(io.dropwizard.jersey.optional.OptionalIntParamConverterProvider.class);
         register(io.dropwizard.jersey.optional.OptionalLongMessageBodyWriter.class);
+        register(io.dropwizard.jersey.optional.OptionalLongParamConverterProvider.class);
         register(io.dropwizard.jersey.optional.OptionalParamFeature.class);
+        register(io.dropwizard.jersey.optional.OptionalParamConverterProvider.class);
         register(AbstractParamConverterProvider.class);
         register(new FuzzyEnumParamConverterProvider());
-        register(new SessionFactoryProvider.Binder());
+        register(new SessionFactoryProvider.SessionFeature());
     }
 
     public static DropwizardResourceConfig forTesting(MetricRegistry metricRegistry) {

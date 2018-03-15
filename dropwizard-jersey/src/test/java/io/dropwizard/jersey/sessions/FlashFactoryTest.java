@@ -1,5 +1,7 @@
 package io.dropwizard.jersey.sessions;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.codahale.metrics.MetricRegistry;
 import io.dropwizard.jersey.AbstractJerseyTest;
 import io.dropwizard.jersey.DropwizardResourceConfig;
@@ -13,14 +15,12 @@ import org.glassfish.jersey.test.spi.TestContainerException;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
 import org.junit.Test;
 
+import java.util.Map;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class FlashFactoryTest extends AbstractJerseyTest {
 
